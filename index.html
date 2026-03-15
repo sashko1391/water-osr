@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Остреченська — визнана якість поліського краю</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-water">
+                <div class="preloader-fill"></div>
+                <svg class="preloader-wave" viewBox="0 0 200 20" preserveAspectRatio="none">
+                    <path d="M0,10 C30,4 60,16 100,10 C140,4 170,16 200,10 L200,20 L0,20Z"/>
+                </svg>
+            </div>
+            <div class="preloader-text">
+                <span class="preloader-brand">Остреченська</span>
+                <span class="preloader-percent" id="preloaderPercent">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursor Trail -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <canvas id="cursorTrail"></canvas>
+
+    <!-- Sound Toggle -->
+    <button class="sound-toggle" id="soundToggle" aria-label="Звук води">
+        <svg class="sound-icon sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+            <path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/>
+        </svg>
+        <svg class="sound-icon sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+        <div class="sound-ripple"></div>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo" data-magnetic>
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <path d="M20 4 C20 4 8 18 8 26 C8 32.6 13.4 38 20 38 C26.6 38 32 32.6 32 26 C32 18 20 4 20 4Z" fill="url(#logoGrad)" opacity="0.9"/>
+                        <path d="M20 4 C20 4 8 18 8 26 C8 32.6 13.4 38 20 38 C26.6 38 32 32.6 32 26 C32 18 20 4 20 4Z" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+                        <ellipse cx="16" cy="22" rx="4" ry="6" fill="rgba(255,255,255,0.25)" transform="rotate(-15 16 22)"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="8" y1="4" x2="32" y2="38">
+                                <stop offset="0%" stop-color="#48cae4"/>
+                                <stop offset="100%" stop-color="#0077b6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Остреченська</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link" data-magnetic>Головна</a></li>
+                <li><a href="#about" class="nav-link" data-magnetic>Про нас</a></li>
+                <li><a href="#products" class="nav-link" data-magnetic>Продукція</a></li>
+                <li><a href="#source" class="nav-link" data-magnetic>Джерело</a></li>
+                <li><a href="#contacts" class="nav-link" data-magnetic>Контакти</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- WebGL Water Background -->
+        <canvas id="heroWater" class="hero-water"></canvas>
+        <!-- Floating particles -->
+        <div class="hero-particles" id="heroParticles"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge" data-reveal>
+                <div class="badge-dot"></div>
+                З глибини 830 метрів
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line" data-split-text>Остреченська</span>
+                <span class="title-sub" data-reveal>визнана якість<br>поліського краю</span>
+            </h1>
+            <p class="hero-desc" data-reveal>
+                Природна мінеральна вода з екологічно чистого регіону Чернігівщини.<br>
+                Розливається безпосередньо на місці видобутку.
+            </p>
+            <div class="hero-actions" data-reveal>
+                <a href="#products" class="btn btn-primary" data-magnetic>
+                    <span class="btn-text">Наша продукція</span>
+                    <span class="btn-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                    <div class="btn-ripple"></div>
+                </a>
+                <a href="#about" class="btn btn-ghost" data-magnetic>
+                    <span class="btn-text">Дізнатись більше</span>
+                    <div class="btn-ripple"></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll CTA -->
+        <div class="hero-scroll" data-reveal>
+            <div class="scroll-line"></div>
+            <span class="scroll-text">Скрольте вниз</span>
+        </div>
+
+        <!-- Wave Transition -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+                <path class="wave-back" d="M0,80 C240,140 480,20 720,80 C960,140 1200,20 1440,80 L1440,150 L0,150Z"/>
+                <path class="wave-front" d="M0,100 C360,140 720,40 1080,100 C1260,130 1380,80 1440,100 L1440,150 L0,150Z"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-reveal>Про компанію</span>
+                <h2 class="section-title" data-split-text>Чиста вода з серця Полісся</h2>
+                <p class="section-desc" data-reveal>Підприємство розташоване в екологічно чистому регіоні Чернігівської області з сертифікацією ISO 9001-2000</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card glass-card" data-reveal data-delay="0">
+                    <div class="card-number">01</div>
+                    <div class="about-icon-wrap">
+                        <div class="icon-bg"></div>
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M24 4 C24 4 10 18 10 28 C10 35.7 16.3 42 24 42 C31.7 42 38 35.7 38 28 C38 18 24 4 24 4Z"/>
+                            <path d="M24 20v12M18 26h12" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Глибина 830м</h3>
+                    <p>Унікальний мінеральний склад з глибини, що забезпечує виняткову чистоту та корисні властивості.</p>
+                </div>
+                <div class="about-card glass-card" data-reveal data-delay="100">
+                    <div class="card-number">02</div>
+                    <div class="about-icon-wrap">
+                        <div class="icon-bg"></div>
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="24" cy="24" r="18"/>
+                            <path d="M16 24l5 5 11-11" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>ISO 9001-2000</h3>
+                    <p>Міжнародний стандарт якості гарантує стабільність та надійність кожної партії продукції.</p>
+                </div>
+                <div class="about-card glass-card" data-reveal data-delay="200">
+                    <div class="card-number">03</div>
+                    <div class="about-icon-wrap">
+                        <div class="icon-bg"></div>
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M24 6C14 6 6 14 6 24s8 18 18 18 18-8 18-18S34 6 24 6z"/>
+                            <path d="M14 30c2-4 6-6 10-6s8 2 10 6" stroke-linecap="round"/>
+                            <circle cx="24" cy="18" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Екологія</h3>
+                    <p>Серце Полісся — один з найчистіших регіонів України, де народжується наша вода.</p>
+                </div>
+                <div class="about-card glass-card" data-reveal data-delay="300">
+                    <div class="card-number">04</div>
+                    <div class="about-icon-wrap">
+                        <div class="icon-bg"></div>
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="20" width="24" height="16" rx="2"/>
+                            <path d="M28 28h10l6 6v4H28"/>
+                            <circle cx="12" cy="38" r="3"/>
+                            <circle cx="38" cy="38" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Власна логістика</h3>
+                    <p>Власний автопарк доставляє продукцію свіжою та вчасно по всій Чернігівщині.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Scroll Text -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span>Остреченська</span><span class="marquee-dot"></span>
+                <span>Мінеральна вода</span><span class="marquee-dot"></span>
+                <span>830 метрів</span><span class="marquee-dot"></span>
+                <span>ISO 9001</span><span class="marquee-dot"></span>
+                <span>Полісся</span><span class="marquee-dot"></span>
+                <span>Чернігівщина</span><span class="marquee-dot"></span>
+                <span>Остреченська</span><span class="marquee-dot"></span>
+                <span>Мінеральна вода</span><span class="marquee-dot"></span>
+                <span>830 метрів</span><span class="marquee-dot"></span>
+                <span>ISO 9001</span><span class="marquee-dot"></span>
+                <span>Полісся</span><span class="marquee-dot"></span>
+                <span>Чернігівщина</span><span class="marquee-dot"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="section products" id="products">
+        <canvas id="productsBubbles" class="products-canvas"></canvas>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag light" data-reveal>Продукція</span>
+                <h2 class="section-title light" data-split-text>Наш асортимент</h2>
+            </div>
+
+            <div class="product-filters" data-reveal>
+                <button class="filter-btn active" data-filter="all">
+                    <span>Всі</span>
+                    <div class="filter-indicator"></div>
+                </button>
+                <button class="filter-btn" data-filter="mineral">
+                    <span>Мінеральна</span>
+                    <div class="filter-indicator"></div>
+                </button>
+                <button class="filter-btn" data-filter="sweet">
+                    <span>Солодка</span>
+                    <div class="filter-indicator"></div>
+                </button>
+                <button class="filter-btn" data-filter="drinking">
+                    <span>Питна</span>
+                    <div class="filter-indicator"></div>
+                </button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <div class="product-card" data-category="mineral" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge mineral">Мінеральна</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #4a90d9"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none">
+                                <rect x="28" y="0" width="24" height="14" rx="3" fill="#4a90d9"/>
+                                <rect x="25" y="10" width="30" height="15" rx="3" fill="#b8d4e3" stroke="#4a90d9" stroke-width="1"/>
+                                <path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#mg1)" stroke="#4a90d9" stroke-width="1"/>
+                                <ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/>
+                                <defs><linearGradient id="mg1" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#c5e8f7"/><stop offset="1" stop-color="#4a90d9"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Остреченська</h3>
+                        <p class="product-type">Мінеральна газована</p>
+                        <div class="product-meta">
+                            <span class="product-vol">0.5л / 1.5л</span>
+                            <span class="product-price">від ₴11.50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="drinking" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge drinking">Питна</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #5bb5a2"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 100 200" fill="none">
+                                <rect x="30" y="0" width="40" height="20" rx="4" fill="#5bb5a2"/>
+                                <path d="M30 20 C25 35 20 55 20 70 L20 175 C20 185 28 192 38 192 L62 192 C72 192 80 185 80 175 L80 70 C80 55 75 35 70 20Z" fill="url(#dg1)" stroke="#5bb5a2" stroke-width="1"/>
+                                <ellipse cx="50" cy="110" rx="20" ry="32" fill="rgba(255,255,255,0.1)"/>
+                                <defs><linearGradient id="dg1" x1="20" y1="20" x2="80" y2="192" gradientUnits="userSpaceOnUse"><stop stop-color="#b5e8d5"/><stop offset="1" stop-color="#5bb5a2"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Сіверська</h3>
+                        <p class="product-type">Питна негазована</p>
+                        <div class="product-meta">
+                            <span class="product-vol">6л</span>
+                            <span class="product-price">₴40.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sweet" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge sweet">Солодка</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #e8a838"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none"><rect x="28" y="0" width="24" height="14" rx="3" fill="#e8a838"/><rect x="25" y="10" width="30" height="15" rx="3" fill="#fce4b8" stroke="#e8a838" stroke-width="1"/><path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#sg1)" stroke="#e8a838" stroke-width="1"/><ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/><defs><linearGradient id="sg1" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#fce4b8"/><stop offset="1" stop-color="#e8a838"/></linearGradient></defs></svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Лимонад</h3>
+                        <p class="product-type">Солодка газована</p>
+                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price">₴19.50</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sweet" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge sweet">Солодка</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #d35f5f"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none"><rect x="28" y="0" width="24" height="14" rx="3" fill="#d35f5f"/><rect x="25" y="10" width="30" height="15" rx="3" fill="#f5c6c6" stroke="#d35f5f" stroke-width="1"/><path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#sg2)" stroke="#d35f5f" stroke-width="1"/><ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/><defs><linearGradient id="sg2" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#f5c6c6"/><stop offset="1" stop-color="#d35f5f"/></linearGradient></defs></svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Малина</h3>
+                        <p class="product-type">Солодка газована</p>
+                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price">₴19.50</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sweet" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge sweet-green">Солодка</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #4caf50"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none"><rect x="28" y="0" width="24" height="14" rx="3" fill="#4caf50"/><rect x="25" y="10" width="30" height="15" rx="3" fill="#c8e6c9" stroke="#4caf50" stroke-width="1"/><path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#sg3)" stroke="#4caf50" stroke-width="1"/><ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/><defs><linearGradient id="sg3" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#c8e6c9"/><stop offset="1" stop-color="#4caf50"/></linearGradient></defs></svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Тархун</h3>
+                        <p class="product-type">Солодка газована</p>
+                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price">₴19.50</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sweet" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge sweet">Солодка</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #8d6e63"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none"><rect x="28" y="0" width="24" height="14" rx="3" fill="#8d6e63"/><rect x="25" y="10" width="30" height="15" rx="3" fill="#d7ccc8" stroke="#8d6e63" stroke-width="1"/><path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#sg4)" stroke="#8d6e63" stroke-width="1"/><ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/><defs><linearGradient id="sg4" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#d7ccc8"/><stop offset="1" stop-color="#8d6e63"/></linearGradient></defs></svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Крем-Сода</h3>
+                        <p class="product-type">Солодка газована</p>
+                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price">₴19.50</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sweet" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge sweet">Солодка</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #ff9800"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none"><rect x="28" y="0" width="24" height="14" rx="3" fill="#ff9800"/><rect x="25" y="10" width="30" height="15" rx="3" fill="#ffe0b2" stroke="#ff9800" stroke-width="1"/><path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#sg5)" stroke="#ff9800" stroke-width="1"/><ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/><defs><linearGradient id="sg5" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#ffe0b2"/><stop offset="1" stop-color="#ff9800"/></linearGradient></defs></svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Буратіно</h3>
+                        <p class="product-type">Солодка газована</p>
+                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price">₴19.50</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sweet" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge sweet">Солодка</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #7b1fa2"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none"><rect x="28" y="0" width="24" height="14" rx="3" fill="#7b1fa2"/><rect x="25" y="10" width="30" height="15" rx="3" fill="#e1bee7" stroke="#7b1fa2" stroke-width="1"/><path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#sg6)" stroke="#7b1fa2" stroke-width="1"/><ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/><defs><linearGradient id="sg6" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#e1bee7"/><stop offset="1" stop-color="#7b1fa2"/></linearGradient></defs></svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Дюшес</h3>
+                        <p class="product-type">Солодка газована</p>
+                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price">₴19.50</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sweet" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge sweet">Солодка</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #f57c00"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none"><rect x="28" y="0" width="24" height="14" rx="3" fill="#f57c00"/><rect x="25" y="10" width="30" height="15" rx="3" fill="#ffcc80" stroke="#f57c00" stroke-width="1"/><path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#sg7)" stroke="#f57c00" stroke-width="1"/><ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/><defs><linearGradient id="sg7" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#ffcc80"/><stop offset="1" stop-color="#f57c00"/></linearGradient></defs></svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Лимон Персик</h3>
+                        <p class="product-type">Солодка газована</p>
+                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price">₴19.50</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sweet" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge sweet">Солодка</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #0288d1"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none"><rect x="28" y="0" width="24" height="14" rx="3" fill="#0288d1"/><rect x="25" y="10" width="30" height="15" rx="3" fill="#b3e5fc" stroke="#0288d1" stroke-width="1"/><path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#sg8)" stroke="#0288d1" stroke-width="1"/><ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/><defs><linearGradient id="sg8" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#b3e5fc"/><stop offset="1" stop-color="#0288d1"/></linearGradient></defs></svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Ситро</h3>
+                        <p class="product-type">Солодка газована</p>
+                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price">₴19.50</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="sweet" data-tilt>
+                    <div class="card-shine"></div>
+                    <div class="product-badge kvas">Квас</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: #5d4037"></div>
+                        <div class="bottle" data-float>
+                            <svg viewBox="0 0 80 200" fill="none"><rect x="28" y="0" width="24" height="14" rx="3" fill="#5d4037"/><rect x="25" y="10" width="30" height="15" rx="3" fill="#bcaaa4" stroke="#5d4037" stroke-width="1"/><path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#kg1)" stroke="#5d4037" stroke-width="1"/><ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.08)"/><defs><linearGradient id="kg1" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#bcaaa4"/><stop offset="1" stop-color="#5d4037"/></linearGradient></defs></svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Квасовий</h3>
+                        <p class="product-type">Квасний напій</p>
+                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price">₴20.50</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Source Section - Full Width Immersive -->
+    <section class="section source" id="source">
+        <div class="source-bg">
+            <canvas id="sourceWater"></canvas>
+        </div>
+        <div class="container">
+            <div class="source-layout">
+                <div class="source-left">
+                    <span class="section-tag light" data-reveal>Джерело</span>
+                    <h2 class="source-title" data-split-text>Гідрокарбонатно-хлоридно-натрієва</h2>
+                    <p class="source-desc" data-reveal>Мінеральна лікувально-столова вода «Остреченська» видобувається зі свердловини глибиною 830 метрів. Розлив безпосередньо на місці видобутку зберігає максимальну цінність мінерального складу.</p>
+                </div>
+                <div class="source-right">
+                    <div class="source-stats">
+                        <div class="stat-card glass-card" data-reveal data-delay="0">
+                            <div class="stat-number"><span data-count="830">0</span><small>м</small></div>
+                            <div class="stat-label">Глибина свердловини</div>
+                            <div class="stat-bar"><div class="stat-fill" data-width="83"></div></div>
+                        </div>
+                        <div class="stat-card glass-card" data-reveal data-delay="150">
+                            <div class="stat-number"><span data-count="12">0</span></div>
+                            <div class="stat-label">Видів продукції</div>
+                            <div class="stat-bar"><div class="stat-fill" data-width="60"></div></div>
+                        </div>
+                        <div class="stat-card glass-card" data-reveal data-delay="300">
+                            <div class="stat-number"><span data-count="3">0</span></div>
+                            <div class="stat-label">Точки продажу</div>
+                            <div class="stat-bar"><div class="stat-fill" data-width="30"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Animated drop -->
+        <div class="source-drop-wrap">
+            <div class="source-drop">
+                <div class="drop-shape"></div>
+                <div class="drop-ripple r1"></div>
+                <div class="drop-ripple r2"></div>
+                <div class="drop-ripple r3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery -->
+    <section class="section delivery" id="delivery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-reveal>Доставка</span>
+                <h2 class="section-title" data-split-text>Способи отримання</h2>
+            </div>
+            <div class="delivery-grid">
+                <div class="delivery-card glass-card" data-reveal data-delay="0" data-tilt>
+                    <div class="delivery-num">01</div>
+                    <div class="delivery-icon">
+                        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="18" width="30" height="22" rx="3"/>
+                            <path d="M34 26h10l8 8v6H34"/>
+                            <circle cx="14" cy="42" r="4"/><circle cx="44" cy="42" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Самовивіз</h3>
+                    <p>Безкоштовно з наших складів у Мені, Чернігові та Шостці</p>
+                </div>
+                <div class="delivery-card glass-card" data-reveal data-delay="150" data-tilt>
+                    <div class="delivery-num">02</div>
+                    <div class="delivery-icon">
+                        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="8" y="8" width="40" height="32" rx="4"/>
+                            <path d="M8 18h40M18 18v22M38 18v22"/>
+                            <path d="M24 44l4 4 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Нова Пошта</h3>
+                    <p>Доставка по всій Україні за тарифами перевізника</p>
+                </div>
+                <div class="delivery-card glass-card" data-reveal data-delay="300" data-tilt>
+                    <div class="delivery-num">03</div>
+                    <div class="delivery-icon">
+                        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="28" cy="22" r="16"/>
+                            <path d="M28 10v12l7 7" stroke-linecap="round"/>
+                            <path d="M20 44h16"/><path d="M16 48h24"/>
+                        </svg>
+                    </div>
+                    <h3>Власний транспорт</h3>
+                    <p>Доставка по Чернігівській області транспортом ТОВ «Нептун»</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts -->
+    <section class="section contacts" id="contacts">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-reveal>Контакти</span>
+                <h2 class="section-title" data-split-text>Зв'яжіться з нами</h2>
+            </div>
+            <div class="contacts-grid">
+                <div class="contact-card glass-card" data-reveal data-delay="0" data-tilt>
+                    <div class="contact-pin"></div>
+                    <div class="contact-city">Мена</div>
+                    <div class="contact-type">Головний офіс</div>
+                    <address>
+                        <p>вул. Гастелло, буд. №3</p>
+                        <p>15600, Чернігівська обл.</p>
+                    </address>
+                    <div class="contact-phones">
+                        <a href="tel:+380464421032">04644 2-10-32</a>
+                        <a href="tel:+380674615190">067 461-51-90</a>
+                    </div>
+                    <div class="contact-hours">Пн-Пт: 08:00 - 17:00</div>
+                </div>
+                <div class="contact-card glass-card" data-reveal data-delay="150" data-tilt>
+                    <div class="contact-pin"></div>
+                    <div class="contact-city">Чернігів</div>
+                    <div class="contact-type">Філія</div>
+                    <address><p>вул. Дніпровська, буд. №34</p></address>
+                    <div class="contact-phones">
+                        <a href="tel:+380674615195">067 461-51-95</a>
+                        <a href="tel:+380674615196">067 461-51-96</a>
+                    </div>
+                    <div class="contact-hours">Пн-Пт: 08:00 - 17:00</div>
+                </div>
+                <div class="contact-card glass-card" data-reveal data-delay="300" data-tilt>
+                    <div class="contact-pin"></div>
+                    <div class="contact-city">Шостка</div>
+                    <div class="contact-type">Філія</div>
+                    <address><p>вул. Свободи, буд. №31</p></address>
+                    <div class="contact-phones">
+                        <a href="tel:+380674615197">067 461-51-97</a>
+                    </div>
+                    <div class="contact-hours">Пн-Пт: 08:00 - 17:00</div>
+                </div>
+            </div>
+            <div class="contact-cta" data-reveal>
+                <a href="mailto:neptun_ltd@ukr.net" class="btn btn-primary btn-lg" data-magnetic>
+                    <span class="btn-text">neptun_ltd@ukr.net</span>
+                    <span class="btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                    <div class="btn-ripple"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+                <path d="M0,30 C480,70 960,10 1440,50 L1440,0 L0,0Z" fill="var(--bg-section)"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-icon small">
+                        <svg viewBox="0 0 40 40" fill="none">
+                            <path d="M20 4 C20 4 8 18 8 26 C8 32.6 13.4 38 20 38 C26.6 38 32 32.6 32 26 C32 18 20 4 20 4Z" fill="url(#logoGrad2)" opacity="0.9"/>
+                            <defs><linearGradient id="logoGrad2" x1="8" y1="4" x2="32" y2="38"><stop stop-color="#48cae4"/><stop offset="1" stop-color="#0077b6"/></linearGradient></defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Остреченська</span>
+                    <p class="footer-tagline">Визнана якість поліського краю</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Навігація</h4>
+                    <a href="#about">Про нас</a>
+                    <a href="#products">Продукція</a>
+                    <a href="#source">Джерело</a>
+                    <a href="#contacts">Контакти</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Контакти</h4>
+                    <a href="tel:+380674615190">067 461-51-90</a>
+                    <a href="mailto:neptun_ltd@ukr.net">neptun_ltd@ukr.net</a>
+                    <p>м. Мена, Чернігівська обл.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ТОВ «Нептун». Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <script src="js/water-shader.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+{
+  "company": {
+    "name": "ТОВ \"Нептун\"",
+    "brand": "Остреченська",
+    "slogan": "Остреченська - визнана якість поліського краю",
+    "description": "Підприємство розташоване в екологічно чистому регіоні України — Чернігівській області. Компанія має сертифікацію ISO 9001-2000. Свердловина глибиною 830 метрів постачає мінеральну лікувально-столову воду гідрокарбонатно-хлоридно-натрієвого складу. Вода розливається безпосередньо на місці видобутку у ємності 0,5 та 1,5 дм³ під брендом \"Остреченська\".",
+    "email": "neptun_ltd@ukr.net",
+    "phones": ["04644 2-10-32", "067 461-51-90"],
+    "website": "neptun.cn.ua"
+  },
+  "locations": [
+    {
+      "city": "Мена",
+      "address": "15600, м. Мена, Чернігівська обл., вул. Гастелло, буд. №3",
+      "phone": ["04644 2-10-32", "067 461-51-90"],
+      "hours": "Пн-Пт 08:00-17:00",
+      "type": "Головний офіс та склад",
+      "coordinates": { "lat": 51.52597, "lng": 32.24983 }
+    },
+    {
+      "city": "Чернігів",
+      "address": "м. Чернігів, вул. Дніпровська, буд. №34",
+      "phone": ["067 461-51-95", "067 461-51-96"],
+      "hours": "Пн-Пт 08:00-17:00",
+      "type": "Філія"
+    },
+    {
+      "city": "Шостка",
+      "address": "м. Шостка, вул. Свободи, буд. №31",
+      "phone": ["067 461-51-97"],
+      "hours": "Пн-Пт 08:00-17:00",
+      "type": "Філія"
+    }
+  ],
+  "delivery": {
+    "methods": [
+      { "name": "Самовивіз", "description": "З головного складу в м. Мена" },
+      { "name": "Нова Пошта", "description": "Оплата за тарифами перевізника" },
+      { "name": "Транспорт ТОВ \"Нептун\"", "description": "Доставка по Чернігівській області за домовленістю" }
+    ]
+  },
+  "categories": [
+    {
+      "id": 59,
+      "name": "Вода солодка газована",
+      "nameEn": "Sweet Carbonated Water"
+    },
+    {
+      "id": 57,
+      "name": "Вода мінеральна газована",
+      "nameEn": "Carbonated Mineral Water"
+    },
+    {
+      "id": 33,
+      "name": "Вода питна негазована",
+      "nameEn": "Non-carbonated Drinking Water"
+    }
+  ],
+  "products": [
+    {
+      "id": 52,
+      "name": "Вода мінеральна газована \"Остреченська\"",
+      "volume": "0.5л",
+      "price": 11.50,
+      "packaging": "12 бут. в упаковці",
+      "category": "mineral",
+      "carbonated": true
+    },
+    {
+      "id": 49,
+      "name": "Вода мінеральна газована \"Остреченська\"",
+      "volume": "1.5л",
+      "price": 18.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "mineral",
+      "carbonated": true
+    },
+    {
+      "id": 62,
+      "name": "Вода питна негазована \"Сіверська\"",
+      "volume": "6л",
+      "price": 40.00,
+      "packaging": "2 бут. в упаковці",
+      "category": "drinking",
+      "carbonated": false
+    },
+    {
+      "id": 50,
+      "name": "Лимонад",
+      "volume": "1.5л",
+      "price": 19.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "sweet",
+      "carbonated": true
+    },
+    {
+      "id": 51,
+      "name": "Буратіно",
+      "volume": "1.5л",
+      "price": 19.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "sweet",
+      "carbonated": true
+    },
+    {
+      "id": 54,
+      "name": "Дюшес",
+      "volume": "1.5л",
+      "price": 19.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "sweet",
+      "carbonated": true
+    },
+    {
+      "id": 57,
+      "name": "Крем-Сода",
+      "volume": "1.5л",
+      "price": 19.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "sweet",
+      "carbonated": true
+    },
+    {
+      "id": 56,
+      "name": "Лимон Персик",
+      "volume": "1.5л",
+      "price": 19.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "sweet",
+      "carbonated": true
+    },
+    {
+      "id": 60,
+      "name": "Малина",
+      "volume": "1.5л",
+      "price": 19.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "sweet",
+      "carbonated": true
+    },
+    {
+      "id": 61,
+      "name": "Ситро",
+      "volume": "1.5л",
+      "price": 19.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "sweet",
+      "carbonated": true
+    },
+    {
+      "id": 59,
+      "name": "Тархун",
+      "volume": "1.5л",
+      "price": 19.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "sweet",
+      "carbonated": true
+    },
+    {
+      "id": 55,
+      "name": "Квасовий",
+      "volume": "1.5л",
+      "price": 20.50,
+      "packaging": "6 бут. в упаковці",
+      "category": "sweet",
+      "carbonated": true
+    }
+  ]
+}
