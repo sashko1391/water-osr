@@ -815,7 +815,35 @@
   filter: blur(12px);
 }
 
-.product-card:hover .product-glow { opacity: 0.4; }
+.product-card:hover .product-glow { opacity: 0.6; }
+
+/* Water fill hover */
+.product-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(180deg, transparent 0%, var(--card-accent, rgba(92,200,200,0.08)) 100%);
+  border-radius: var(--radius-lg);
+  transition: height 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.product-card:hover::before {
+  height: 100%;
+}
+
+.product-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.product-card[data-category="mineral"] { --card-accent: rgba(92,200,200,0.08); }
+.product-card[data-category="drinking"] { --card-accent: rgba(91,181,162,0.08); }
+.product-card[data-category="sweet"] { --card-accent: rgba(232,168,56,0.06); }
 
 .bottle {
   height: 140px;
@@ -828,7 +856,7 @@
 }
 
 .product-card:hover .bottle {
-  transform: perspective(800px) rotateY(-5deg) rotateX(3deg) translateY(-8px);
+  transform: perspective(800px) rotateY(-5deg) rotateX(3deg) translateY(-12px) scale(1.05);
 }
 
 .product-info h3 {
@@ -873,6 +901,15 @@
   font-size: 10px;
   color: rgba(var(--sandy-gold-rgb), 0.6);
   margin-top: 0.375rem;
+}
+
+.products-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  flex-wrap: wrap;
 }
 
 .pricing-note {

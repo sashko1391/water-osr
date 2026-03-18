@@ -168,6 +168,7 @@
 
     // Pricing note
     reveal('.pricing-note', { y: 20, duration: 0.6 });
+    reveal('.products-cta', { y: 30, duration: 0.8 });
 
     // Composition note
     reveal('.composition-note', { y: 20, duration: 0.6 });
