@@ -28,7 +28,6 @@
 }
 
 .preloader.hidden {
-  opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
@@ -182,7 +181,6 @@
   transform: translateY(8px) rotate(45deg);
 }
 .nav-toggle.active span:nth-child(2) {
-  opacity: 0;
 }
 .nav-toggle.active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
@@ -232,7 +230,6 @@
   text-transform: uppercase;
   color: var(--crystal-spring);
   margin-bottom: var(--space-md);
-  opacity: 0;
 }
 
 .badge-dot {
@@ -277,7 +274,6 @@
   color: rgba(232, 244, 240, 0.5);
   margin: 0 auto var(--space-lg);
   max-width: 500px;
-  opacity: 0;
 }
 
 .hero-actions {
@@ -286,7 +282,6 @@
   justify-content: center;
   gap: var(--space-sm);
   flex-wrap: wrap;
-  opacity: 0;
 }
 
 /* Scroll indicator */
@@ -299,7 +294,6 @@
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-  opacity: 0;
   z-index: var(--z-content);
 }
 
@@ -361,7 +355,6 @@
   gap: var(--space-md);
   flex-wrap: wrap;
   margin-bottom: var(--space-lg);
-  opacity: 0;
 }
 
 .proof-item {
@@ -404,7 +397,6 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  opacity: 0;
 }
 
 .mineral-card::before {
@@ -448,7 +440,6 @@
 }
 
 .composition-note {
-  opacity: 0;
 }
 
 /* ── For Whom ── */
@@ -465,7 +456,6 @@
 .whom-card {
   padding: var(--space-xl) var(--space-md) var(--space-lg);
   text-align: center;
-  opacity: 0;
   position: relative;
 }
 
@@ -524,7 +514,6 @@
   text-transform: uppercase;
   color: var(--crystal-spring);
   margin-bottom: var(--space-sm);
-  opacity: 0;
 }
 
 .section-title {
@@ -534,7 +523,6 @@
 .section-desc {
   max-width: 600px;
   margin: 0 auto;
-  opacity: 0;
 }
 
 /* ── Depth Gauge ── */
@@ -548,7 +536,6 @@
   flex-direction: column;
   align-items: center;
   gap: 0;
-  opacity: 0;
   transition: opacity var(--duration-slow) var(--ease-out);
   pointer-events: none;
 }
@@ -657,7 +644,6 @@
 .about-card {
   padding: var(--space-lg) var(--space-md);
   text-align: center;
-  opacity: 0;
 }
 
 .card-number {
@@ -722,7 +708,6 @@
   gap: var(--space-sm);
   margin-bottom: var(--space-xl);
   flex-wrap: wrap;
-  opacity: 0;
 }
 
 .filter-btn {
@@ -784,7 +769,6 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
-  opacity: 0;
   transition: opacity var(--duration-normal);
   pointer-events: none;
 }
@@ -827,7 +811,6 @@
   width: 80%;
   height: 40px;
   background: radial-gradient(ellipse, var(--glow-color, rgba(var(--crystal-spring-rgb),0.3)) 0%, transparent 70%);
-  opacity: 0;
   transition: opacity var(--duration-normal);
   filter: blur(12px);
 }
@@ -894,7 +877,6 @@
 
 .pricing-note {
   margin-bottom: var(--space-lg);
-  opacity: 0;
 }
 
 /* ── Drop Journey (Killer Section) ── */
@@ -960,7 +942,6 @@
 }
 
 .journey-fact {
-  opacity: 0;
   transform: translateX(-20px);
   transition: all 0.6s var(--ease-out);
   margin-bottom: var(--space-md);
@@ -1018,7 +999,6 @@
 
 .source-desc {
   color: rgba(232, 244, 240, 0.6);
-  opacity: 0;
 }
 
 .source-stats {
@@ -1029,7 +1009,6 @@
 
 .stat-card {
   padding: var(--space-md);
-  opacity: 0;
 }
 
 .stat-number {
@@ -1081,7 +1060,6 @@
 .delivery-card {
   padding: var(--space-lg) var(--space-md);
   text-align: center;
-  opacity: 0;
 }
 
 .delivery-num {
@@ -1148,7 +1126,6 @@
 
 .contact-card {
   padding: var(--space-lg) var(--space-md);
-  opacity: 0;
 }
 
 .contact-pin {
@@ -1208,7 +1185,6 @@
 
 .contact-cta {
   text-align: center;
-  opacity: 0;
 }
 
 /* ── Footer ── */
