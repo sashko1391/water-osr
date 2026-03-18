@@ -710,6 +710,23 @@
   font-weight: 500;
 }
 
+.product-pack {
+  font-size: 10px;
+  color: rgba(232, 244, 240, 0.35);
+  margin-bottom: var(--space-xs);
+}
+
+.product-min-order {
+  font-size: 10px;
+  color: rgba(var(--sandy-gold-rgb), 0.6);
+  margin-top: 0.375rem;
+}
+
+.pricing-note {
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+}
+
 /* ── Drop Journey (Killer Section) ── */
 .drop-journey {
   position: relative;
@@ -925,6 +942,26 @@
 .delivery-card p {
   font-size: var(--fs-small);
   color: rgba(232, 244, 240, 0.5);
+}
+
+.delivery-price {
+  font-size: var(--fs-xs);
+  color: var(--crystal-spring);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--glass-border);
+}
+
+.delivery-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 1100px) {
+  .delivery-grid-5 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .delivery-grid-5 { grid-template-columns: 1fr; }
 }
 
 /* ── Contacts ── */

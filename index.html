@@ -285,8 +285,15 @@
                 <button class="filter-btn" data-filter="drinking"><span>Питна</span></button>
             </div>
 
+            <!-- Pricing note -->
+            <div class="pricing-note glass-card" data-reveal>
+                <p class="mono" style="font-size:var(--fs-xs); color:var(--crystal-spring); text-align:center; padding:var(--space-sm) var(--space-md);">
+                    Вказані дрібно-оптові ціни при самовивозі із головного складу м. Мена. Для оптових цін — зв'яжіться через форму зворотного зв'язку.
+                </p>
+            </div>
+
             <div class="products-grid" id="productsGrid">
-                <!-- Mineral -->
+                <!-- Mineral 0.5L -->
                 <div class="product-card" data-category="mineral">
                     <div class="card-shine"></div>
                     <div class="product-badge mineral">Мінеральна</div>
@@ -305,14 +312,44 @@
                     <div class="product-info">
                         <h3>Остреченська</h3>
                         <p class="product-type">Мінеральна газована</p>
+                        <p class="product-pack mono">12 пляшок в упаковці</p>
                         <div class="product-meta">
-                            <span class="product-vol">0.5л / 1.5л</span>
-                            <span class="product-price">від <span class="mono">13</span> грн</span>
+                            <span class="product-vol">0.5 л</span>
+                            <span class="product-price"><span class="mono">13</span> грн</span>
                         </div>
+                        <div class="product-min-order mono">мін. замовлення: 12 шт</div>
                     </div>
                 </div>
 
-                <!-- Drinking -->
+                <!-- Mineral 1.5L -->
+                <div class="product-card" data-category="mineral">
+                    <div class="card-shine"></div>
+                    <div class="product-badge mineral">Мінеральна</div>
+                    <div class="product-visual">
+                        <div class="product-glow" style="--glow-color: rgba(92,200,200,0.4)"></div>
+                        <div class="bottle">
+                            <svg viewBox="0 0 80 200" fill="none">
+                                <rect x="28" y="0" width="24" height="14" rx="3" fill="#2E8B8B"/>
+                                <rect x="25" y="10" width="30" height="15" rx="3" fill="#b8e8e8" stroke="#2E8B8B" stroke-width="1"/>
+                                <path d="M25 25 C20 40 15 60 15 80 L15 180 C15 190 20 195 30 195 L50 195 C60 195 65 190 65 180 L65 80 C65 60 60 40 55 25Z" fill="url(#mg2)" stroke="#2E8B8B" stroke-width="1"/>
+                                <ellipse cx="40" cy="120" rx="16" ry="28" fill="rgba(255,255,255,0.12)"/>
+                                <defs><linearGradient id="mg2" x1="15" y1="25" x2="65" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#c5f0f0"/><stop offset="1" stop-color="#2E8B8B"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Остреченська</h3>
+                        <p class="product-type">Мінеральна газована</p>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta">
+                            <span class="product-vol">1.5 л</span>
+                            <span class="product-price"><span class="mono">21</span> грн</span>
+                        </div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
+                    </div>
+                </div>
+
+                <!-- Drinking 6L -->
                 <div class="product-card" data-category="drinking">
                     <div class="card-shine"></div>
                     <div class="product-badge drinking">Питна</div>
@@ -330,10 +367,12 @@
                     <div class="product-info">
                         <h3>Сіверська</h3>
                         <p class="product-type">Питна негазована</p>
+                        <p class="product-pack mono">2 пляшки в упаковці</p>
                         <div class="product-meta">
-                            <span class="product-vol">6л</span>
+                            <span class="product-vol">6 л</span>
                             <span class="product-price"><span class="mono">44</span> грн</span>
                         </div>
+                        <div class="product-min-order mono">мін. замовлення: 2 шт</div>
                     </div>
                 </div>
 
@@ -350,7 +389,9 @@
                     <div class="product-info">
                         <h3>Лимонад</h3>
                         <p class="product-type">Солодка газована</p>
-                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta"><span class="product-vol">1.5 л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
                     </div>
                 </div>
 
@@ -366,7 +407,9 @@
                     <div class="product-info">
                         <h3>Малина</h3>
                         <p class="product-type">Солодка газована</p>
-                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta"><span class="product-vol">1.5 л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
                     </div>
                 </div>
 
@@ -382,7 +425,9 @@
                     <div class="product-info">
                         <h3>Тархун</h3>
                         <p class="product-type">Солодка газована</p>
-                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta"><span class="product-vol">1.5 л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
                     </div>
                 </div>
 
@@ -398,7 +443,9 @@
                     <div class="product-info">
                         <h3>Крем-Сода</h3>
                         <p class="product-type">Солодка газована</p>
-                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta"><span class="product-vol">1.5 л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
                     </div>
                 </div>
 
@@ -414,7 +461,9 @@
                     <div class="product-info">
                         <h3>Буратіно</h3>
                         <p class="product-type">Солодка газована</p>
-                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta"><span class="product-vol">1.5 л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
                     </div>
                 </div>
 
@@ -430,7 +479,9 @@
                     <div class="product-info">
                         <h3>Дюшес</h3>
                         <p class="product-type">Солодка газована</p>
-                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta"><span class="product-vol">1.5 л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
                     </div>
                 </div>
 
@@ -446,7 +497,9 @@
                     <div class="product-info">
                         <h3>Лимон Персик</h3>
                         <p class="product-type">Солодка газована</p>
-                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta"><span class="product-vol">1.5 л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
                     </div>
                 </div>
 
@@ -462,7 +515,9 @@
                     <div class="product-info">
                         <h3>Ситро</h3>
                         <p class="product-type">Солодка газована</p>
-                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta"><span class="product-vol">1.5 л</span><span class="product-price"><span class="mono">22</span> грн</span></div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
                     </div>
                 </div>
 
@@ -478,7 +533,9 @@
                     <div class="product-info">
                         <h3>Квасовий</h3>
                         <p class="product-type">Квасний напій</p>
-                        <div class="product-meta"><span class="product-vol">1.5л</span><span class="product-price"><span class="mono">23</span> грн</span></div>
+                        <p class="product-pack mono">6 пляшок в упаковці</p>
+                        <div class="product-meta"><span class="product-vol">1.5 л</span><span class="product-price"><span class="mono">23</span> грн</span></div>
+                        <div class="product-min-order mono">мін. замовлення: 6 шт</div>
                     </div>
                 </div>
             </div>
@@ -567,9 +624,48 @@
                 <span class="section-tag" data-reveal>Доставка</span>
                 <h2 class="section-title" data-split-text>Способи отримання</h2>
             </div>
-            <div class="delivery-grid">
+            <div class="delivery-grid delivery-grid-5">
                 <div class="delivery-card glass-card" data-reveal>
                     <div class="delivery-num mono">01</div>
+                    <div class="delivery-icon">
+                        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="8" y="14" width="40" height="28" rx="4"/>
+                            <path d="M18 14V10a10 10 0 0120 0v4"/>
+                            <circle cx="28" cy="30" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Самовивіз Мена</h3>
+                    <p>Головний склад, вул. Гастелло, 3. Базові ціни без доплат</p>
+                    <div class="delivery-price mono">безкоштовно</div>
+                </div>
+                <div class="delivery-card glass-card" data-reveal>
+                    <div class="delivery-num mono">02</div>
+                    <div class="delivery-icon">
+                        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="8" y="14" width="40" height="28" rx="4"/>
+                            <path d="M18 14V10a10 10 0 0120 0v4"/>
+                            <circle cx="28" cy="30" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Самовивіз Чернігів</h3>
+                    <p>Оптовий склад, вул. Дніпровська, 34</p>
+                    <div class="delivery-price mono">+0.50–1.50 грн/шт</div>
+                </div>
+                <div class="delivery-card glass-card" data-reveal>
+                    <div class="delivery-num mono">03</div>
+                    <div class="delivery-icon">
+                        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="8" y="14" width="40" height="28" rx="4"/>
+                            <path d="M18 14V10a10 10 0 0120 0v4"/>
+                            <circle cx="28" cy="30" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Самовивіз Шостка</h3>
+                    <p>Оптовий склад, вул. Свободи, 31</p>
+                    <div class="delivery-price mono">+0.50–1.50 грн/шт</div>
+                </div>
+                <div class="delivery-card glass-card" data-reveal>
+                    <div class="delivery-num mono">04</div>
                     <div class="delivery-icon">
                         <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect x="4" y="18" width="30" height="22" rx="3"/>
@@ -577,23 +673,12 @@
                             <circle cx="14" cy="42" r="4"/><circle cx="44" cy="42" r="4"/>
                         </svg>
                     </div>
-                    <h3>Самовивіз</h3>
-                    <p>Безкоштовно з наших складів у Мені, Чернігові та Шостці</p>
-                </div>
-                <div class="delivery-card glass-card" data-reveal>
-                    <div class="delivery-num mono">02</div>
-                    <div class="delivery-icon">
-                        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="8" y="8" width="40" height="32" rx="4"/>
-                            <path d="M8 18h40M18 18v22M38 18v22"/>
-                            <path d="M24 44l4 4 4-4"/>
-                        </svg>
-                    </div>
                     <h3>Нова Пошта</h3>
                     <p>Доставка по всій Україні за тарифами перевізника</p>
+                    <div class="delivery-price mono">за тарифом НП</div>
                 </div>
                 <div class="delivery-card glass-card" data-reveal>
-                    <div class="delivery-num mono">03</div>
+                    <div class="delivery-num mono">05</div>
                     <div class="delivery-icon">
                         <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5">
                             <circle cx="28" cy="22" r="16"/>
@@ -601,8 +686,9 @@
                             <path d="M20 44h16"/><path d="M16 48h24"/>
                         </svg>
                     </div>
-                    <h3>Власний транспорт</h3>
-                    <p>Доставка по Чернігівській області транспортом ТОВ «Нептун»</p>
+                    <h3>Транспорт ТОВ «Нептун»</h3>
+                    <p>Доставка власним автопарком по Чернігівській області, за домовленістю</p>
+                    <div class="delivery-price mono">за домовленістю</div>
                 </div>
             </div>
         </div>
