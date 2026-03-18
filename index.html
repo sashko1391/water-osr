@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
+    <!-- Noise texture overlay for visual depth -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
     <!-- ═══════════════════════════════════════
          PRELOADER
     ════════════════════════════════════════ -->
@@ -142,27 +145,44 @@
         <div class="hero-content">
             <div class="hero-badge" data-reveal>
                 <div class="badge-dot"></div>
-                <span class="mono">З глибини 830 метрів</span>
+                <span class="mono">Чернігівщина &middot; з 830 метрів під землею</span>
             </div>
             <h1 class="hero-title">
-                <span class="title-line" data-split-text>Остреченська</span>
-                <span class="title-sub" data-reveal>визнана якість<br>поліського краю</span>
+                <span class="title-line" data-split-text>Воду не везуть.</span>
+                <span class="title-line title-line-accent" data-split-text>Її добувають тут.</span>
             </h1>
             <p class="hero-desc" data-reveal>
-                Природна мінеральна вода з екологічно чистого регіону Чернігівщини.
-                Розливається безпосередньо на місці видобутку.
+                Остреченська — мінеральна вода, яка народжується на глибині 830 метрів
+                у серці Полісся та розливається прямо на місці видобутку.
             </p>
+
+            <!-- Micro-proof badges -->
+            <div class="hero-proofs" data-reveal>
+                <div class="proof-item">
+                    <svg viewBox="0 0 20 20" fill="none" class="proof-check"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Джерело: <strong class="mono">830 м</strong></span>
+                </div>
+                <div class="proof-item">
+                    <svg viewBox="0 0 20 20" fill="none" class="proof-check"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Розлив на місці видобутку</span>
+                </div>
+                <div class="proof-item">
+                    <svg viewBox="0 0 20 20" fill="none" class="proof-check"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Сертифікація <strong class="mono">ISO 9001</strong></span>
+                </div>
+            </div>
+
             <div class="hero-actions" data-reveal>
                 <a href="#products" class="btn btn-primary">
-                    <span class="btn-text">Наша продукція</span>
+                    <span class="btn-text">Дивитись продукцію</span>
                     <span class="btn-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </span>
                 </a>
-                <a href="#journey" class="btn btn-ghost">
-                    <span class="btn-text">Пірнути на 830м</span>
+                <a href="#contacts" class="btn btn-ghost">
+                    <span class="btn-text">Де купити</span>
                 </a>
             </div>
         </div>
@@ -240,6 +260,108 @@
                     </div>
                     <h3>Власна логістика</h3>
                     <p>Власний автопарк доставляє продукцію свіжою та вчасно по всій Чернігівщині</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         MINERAL COMPOSITION
+    ════════════════════════════════════════ -->
+    <section class="section composition" id="composition">
+        <span class="watermark" style="top: 10%; right: -3%;" aria-hidden="true">H₂O</span>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-reveal>Мінеральний склад</span>
+                <h2 class="section-title" data-split-text>Що всередині кожної краплі</h2>
+                <p class="section-desc" data-reveal>Гідрокарбонатно-хлоридно-натрієва лікувально-столова вода, збагачена природними мінералами на глибині 830 метрів</p>
+            </div>
+            <div class="composition-grid">
+                <div class="mineral-card glass-card" data-reveal>
+                    <div class="mineral-symbol mono">Na<sup>+</sup></div>
+                    <div class="mineral-name">Натрій</div>
+                    <p>Регулює водно-сольовий баланс, підтримує нервову систему та м'язову активність</p>
+                </div>
+                <div class="mineral-card glass-card" data-reveal>
+                    <div class="mineral-symbol mono">Cl<sup>−</sup></div>
+                    <div class="mineral-name">Хлориди</div>
+                    <p>Стимулюють травлення, нормалізують кислотність шлункового соку</p>
+                </div>
+                <div class="mineral-card glass-card" data-reveal>
+                    <div class="mineral-symbol mono">HCO₃<sup>−</sup></div>
+                    <div class="mineral-name">Гідрокарбонати</div>
+                    <p>Нейтралізують кислотність, покращують роботу печінки та жовчного міхура</p>
+                </div>
+                <div class="mineral-card glass-card" data-reveal>
+                    <div class="mineral-symbol mono">Ca<sup>2+</sup></div>
+                    <div class="mineral-name">Кальцій</div>
+                    <p>Зміцнює кістки та зуби, підтримує серцево-судинну систему</p>
+                </div>
+                <div class="mineral-card glass-card" data-reveal>
+                    <div class="mineral-symbol mono">Mg<sup>2+</sup></div>
+                    <div class="mineral-name">Магній</div>
+                    <p>Знижує стрес, покращує сон, необхідний для 300+ ферментних реакцій</p>
+                </div>
+                <div class="mineral-card glass-card" data-reveal>
+                    <div class="mineral-symbol mono">K<sup>+</sup></div>
+                    <div class="mineral-name">Калій</div>
+                    <p>Підтримує серцевий ритм, контролює артеріальний тиск</p>
+                </div>
+            </div>
+            <div class="composition-note" data-reveal>
+                <p class="mono" style="font-size:var(--fs-xs); color:rgba(232,244,240,0.35); text-align:center;">
+                    Тип: мінеральна лікувально-столова &middot; Мінералізація: середня &middot; Газація: природна + штучна
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOR WHOM
+    ════════════════════════════════════════ -->
+    <section class="section for-whom" id="for-whom">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-reveal>Для кого</span>
+                <h2 class="section-title" data-split-text>Вода для кожного</h2>
+            </div>
+            <div class="whom-grid">
+                <div class="whom-card glass-card" data-reveal>
+                    <div class="whom-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 52V40a12 12 0 0124 0v12"/>
+                            <circle cx="32" cy="22" r="10"/>
+                            <path d="M10 56h44"/>
+                        </svg>
+                    </div>
+                    <h3>Для дому</h3>
+                    <p>Щоденна питна вода для всієї родини. Мінеральна — для здоров'я, солодка — для задоволення. Від 2 пляшок у замовленні.</p>
+                    <div class="whom-products mono">Остреченська 0.5л &middot; 1.5л &middot; Сіверська 6л</div>
+                </div>
+                <div class="whom-card glass-card" data-reveal>
+                    <div class="whom-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="8" y="28" width="48" height="24" rx="4"/>
+                            <path d="M20 28V20a4 4 0 014-4h16a4 4 0 014 4v8"/>
+                            <circle cx="32" cy="40" r="6"/>
+                            <path d="M28 40h8"/>
+                        </svg>
+                    </div>
+                    <h3>Для HoReCa</h3>
+                    <p>Ресторани, готелі, кафе. 9 смаків солодких напоїв + мінеральна в скляному форматі. Оптові ціни від 6 упаковок.</p>
+                    <div class="whom-products mono">9 смаків &middot; Опт від 6 уп. &middot; Власна доставка</div>
+                </div>
+                <div class="whom-card glass-card" data-reveal>
+                    <div class="whom-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="6" y="12" width="52" height="36" rx="4"/>
+                            <path d="M6 24h52"/>
+                            <path d="M22 32h20M22 38h12"/>
+                        </svg>
+                    </div>
+                    <h3>Для бізнесу</h3>
+                    <p>Магазини, торгові мережі, дистриб'ютори. Склади у Мені, Чернігові та Шостці. Комерційні пропозиції за запитом.</p>
+                    <div class="whom-products mono">3 склади &middot; Нова Пошта &middot; Власний автопарк</div>
                 </div>
             </div>
         </div>

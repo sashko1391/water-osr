@@ -66,9 +66,15 @@
     .from('.hero-desc', {
       opacity: 0, y: 20, duration: 1
     }, '-=0.8')
-    .from('.hero-actions', {
+    .from('.hero-proofs', {
       opacity: 0, y: 20, duration: 0.8
     }, '-=0.6')
+    .from('.proof-item', {
+      opacity: 0, x: -15, duration: 0.5, stagger: 0.1
+    }, '-=0.5')
+    .from('.hero-actions', {
+      opacity: 0, y: 20, duration: 0.8
+    }, '-=0.3')
     .from('.hero-scroll', {
       opacity: 0, y: 10, duration: 0.8
     }, '-=0.4');
@@ -162,6 +168,36 @@
         },
         opacity: 0, y: 40,
         duration: 0.6,
+        delay: i * 0.15,
+        ease: 'power2.out',
+      });
+    });
+
+    // Mineral composition cards
+    gsap.utils.toArray('.mineral-card').forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+        opacity: 0, y: 50, scale: 0.95,
+        duration: 0.7,
+        delay: i * 0.1,
+        ease: 'power2.out',
+      });
+    });
+
+    // For-whom cards
+    gsap.utils.toArray('.whom-card').forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+        opacity: 0, y: 50,
+        duration: 0.7,
         delay: i * 0.15,
         ease: 'power2.out',
       });
