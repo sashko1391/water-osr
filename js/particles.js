@@ -1,239 +1,146 @@
-/**
- * Particle Systems
- * - Hero floating particles
- * - Products bubbles canvas
- * - Cursor trail drops
- */
+/* ============================================
+   PARTICLES — Canvas Bubble System
+   Performance-focused, IntersectionObserver-gated
+   ============================================ */
 
-// ============ Hero Particles ============
-class HeroParticles {
-    constructor(container) {
-        this.container = container;
-        if (!container) return;
-        this.particles = [];
-        this.create();
-    }
+const Particles = (() => {
+  const systems = [];
 
-    create() {
-        for (let i = 0; i < 30; i++) {
-            this.addParticle();
-        }
-    }
+  class BubbleSystem {
+    constructor(canvasId, options = {}) {
+      this.canvas = document.getElementById(canvasId);
+      if (!this.canvas) return;
 
-    addParticle() {
-        const el = document.createElement('div');
-        el.className = 'hero-particle';
+      this.ctx = this.canvas.getContext('2d');
+      this.bubbles = [];
+      this.active = false;
+      this.animId = null;
 
-        const size = 2 + Math.random() * 6;
-        const isGlowing = Math.random() > 0.7;
+      this.config = {
+        count: options.count || 40,
+        minSize: options.minSize || 2,
+        maxSize: options.maxSize || 8,
+        minSpeed: options.minSpeed || 0.3,
+        maxSpeed: options.maxSpeed || 1.2,
+        minOpacity: options.minOpacity || 0.08,
+        maxOpacity: options.maxOpacity || 0.35,
+        color: options.color || '92, 200, 200',
+        wobbleAmp: options.wobbleAmp || 0.5,
+      };
 
-        Object.assign(el.style, {
-            width: size + 'px',
-            height: size + 'px',
-            left: Math.random() * 100 + '%',
-            top: Math.random() * 100 + '%',
-            background: isGlowing
-                ? `radial-gradient(circle, rgba(72, 202, 228, 0.6), rgba(72, 202, 228, 0.1))`
-                : `radial-gradient(circle, rgba(255,255,255, 0.15), transparent)`,
-            boxShadow: isGlowing ? `0 0 ${size * 3}px rgba(72, 202, 228, 0.3)` : 'none',
-            opacity: 0,
-        });
-
-        this.container.appendChild(el);
-
-        this.animateParticle(el, size);
-    }
-
-    animateParticle(el, size) {
-        const duration = 8 + Math.random() * 15;
-        const delay = Math.random() * 8;
-        const xDrift = (Math.random() - 0.5) * 200;
-        const yDrift = -(100 + Math.random() * 300);
-
-        if (typeof gsap !== 'undefined') {
-            gsap.fromTo(el,
-                {
-                    y: 0,
-                    x: 0,
-                    opacity: 0,
-                    scale: 0,
-                },
-                {
-                    y: yDrift,
-                    x: xDrift,
-                    opacity: Math.random() * 0.5 + 0.2,
-                    scale: 1,
-                    duration: duration,
-                    delay: delay,
-                    repeat: -1,
-                    ease: 'none',
-                    onRepeat: () => {
-                        el.style.left = Math.random() * 100 + '%';
-                        el.style.top = (60 + Math.random() * 40) + '%';
-                    }
-                }
-            );
-        }
-    }
-}
-
-// ============ Products Bubbles ============
-class BubblesCanvas {
-    constructor(canvas) {
-        this.canvas = canvas;
-        if (!canvas) return;
-        this.ctx = canvas.getContext('2d');
-        this.bubbles = [];
-        this.resize();
-        window.addEventListener('resize', () => this.resize());
-        this.spawn();
-        this.animate();
+      this.resize();
+      this.createBubbles();
+      this.observe();
+      window.addEventListener('resize', () => this.resize());
     }
 
     resize() {
-        const dpr = Math.min(window.devicePixelRatio, 2);
-        this.canvas.width = this.canvas.offsetWidth * dpr;
-        this.canvas.height = this.canvas.offsetHeight * dpr;
+      if (!this.canvas) return;
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      this.canvas.width = this.canvas.clientWidth * dpr;
+      this.canvas.height = this.canvas.clientHeight * dpr;
+      if (this.ctx) {
+        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
         this.ctx.scale(dpr, dpr);
-        this.w = this.canvas.offsetWidth;
-        this.h = this.canvas.offsetHeight;
+      }
+      this.w = this.canvas.clientWidth;
+      this.h = this.canvas.clientHeight;
     }
 
-    spawn() {
-        // Keep 20 bubbles alive
-        setInterval(() => {
-            if (this.bubbles.length < 25) {
-                this.bubbles.push({
-                    x: Math.random() * this.w,
-                    y: this.h + 20,
-                    r: 2 + Math.random() * 8,
-                    speed: 0.3 + Math.random() * 0.8,
-                    wobble: Math.random() * Math.PI * 2,
-                    wobbleSpeed: 0.01 + Math.random() * 0.02,
-                    opacity: 0.1 + Math.random() * 0.2,
-                });
-            }
-        }, 600);
-    }
+    createBubbles() {
+      const { count, minSize, maxSize, minSpeed, maxSpeed, minOpacity, maxOpacity } = this.config;
+      const isMobile = window.innerWidth < 768;
+      const actualCount = isMobile ? Math.floor(count * 0.4) : count;
 
-    animate() {
-        this.ctx.clearRect(0, 0, this.w, this.h);
-
-        this.bubbles.forEach((b, i) => {
-            b.y -= b.speed;
-            b.wobble += b.wobbleSpeed;
-            b.x += Math.sin(b.wobble) * 0.5;
-
-            // Draw bubble
-            this.ctx.beginPath();
-            this.ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-
-            const grad = this.ctx.createRadialGradient(
-                b.x - b.r * 0.3, b.y - b.r * 0.3, 0,
-                b.x, b.y, b.r
-            );
-            grad.addColorStop(0, `rgba(255, 255, 255, ${b.opacity * 0.6})`);
-            grad.addColorStop(0.6, `rgba(72, 202, 228, ${b.opacity * 0.2})`);
-            grad.addColorStop(1, `rgba(72, 202, 228, 0)`);
-
-            this.ctx.fillStyle = grad;
-            this.ctx.fill();
-
-            // Highlight
-            this.ctx.beginPath();
-            this.ctx.arc(b.x - b.r * 0.25, b.y - b.r * 0.25, b.r * 0.3, 0, Math.PI * 2);
-            this.ctx.fillStyle = `rgba(255, 255, 255, ${b.opacity * 0.5})`;
-            this.ctx.fill();
-
-            // Remove if off screen
-            if (b.y < -b.r * 2) {
-                this.bubbles.splice(i, 1);
-            }
+      this.bubbles = [];
+      for (let i = 0; i < actualCount; i++) {
+        this.bubbles.push({
+          x: Math.random() * this.w,
+          y: this.h + Math.random() * this.h,
+          r: minSize + Math.random() * (maxSize - minSize),
+          speed: minSpeed + Math.random() * (maxSpeed - minSpeed),
+          opacity: minOpacity + Math.random() * (maxOpacity - minOpacity),
+          wobbleOffset: Math.random() * Math.PI * 2,
+          wobbleSpeed: 0.01 + Math.random() * 0.02,
+          time: 0,
         });
-
-        requestAnimationFrame(() => this.animate());
+      }
     }
-}
 
-// ============ Cursor Trail ============
-class CursorTrail {
-    constructor(canvas) {
-        this.canvas = canvas;
-        if (!canvas || window.innerWidth < 768) return;
-
-        this.ctx = canvas.getContext('2d');
-        this.drops = [];
-        this.mouse = { x: 0, y: 0 };
-        this.lastMouse = { x: 0, y: 0 };
-
-        this.resize();
-        window.addEventListener('resize', () => this.resize());
-        window.addEventListener('mousemove', (e) => {
-            this.mouse.x = e.clientX;
-            this.mouse.y = e.clientY;
+    observe() {
+      if (!this.canvas) return;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) this.start();
+          else this.stop();
         });
-
-        this.animate();
+      }, { threshold: 0.1 });
+      observer.observe(this.canvas);
     }
 
-    resize() {
-        const dpr = Math.min(window.devicePixelRatio, 2);
-        this.canvas.width = window.innerWidth * dpr;
-        this.canvas.height = window.innerHeight * dpr;
-        this.ctx.scale(dpr, dpr);
+    start() {
+      if (this.active) return;
+      this.active = true;
+      this.render();
     }
 
-    animate() {
-        this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    stop() {
+      this.active = false;
+      if (this.animId) {
+        cancelAnimationFrame(this.animId);
+        this.animId = null;
+      }
+    }
 
-        // Speed check — only emit when moving
-        const dx = this.mouse.x - this.lastMouse.x;
-        const dy = this.mouse.y - this.lastMouse.y;
-        const speed = Math.sqrt(dx * dx + dy * dy);
+    render() {
+      if (!this.active || !this.ctx) return;
 
-        if (speed > 3 && this.drops.length < 20) {
-            this.drops.push({
-                x: this.mouse.x + (Math.random() - 0.5) * 10,
-                y: this.mouse.y + (Math.random() - 0.5) * 10,
-                r: 1.5 + Math.random() * 3,
-                life: 1,
-                decay: 0.015 + Math.random() * 0.02,
-                vy: 0.5 + Math.random() * 1.5,
-                vx: (Math.random() - 0.5) * 0.5,
-            });
+      this.ctx.clearRect(0, 0, this.w, this.h);
+      const { color, wobbleAmp } = this.config;
+
+      for (const b of this.bubbles) {
+        b.time += 1;
+        b.y -= b.speed;
+
+        const wobble = Math.sin(b.time * b.wobbleSpeed + b.wobbleOffset) * wobbleAmp;
+        const drawX = b.x + wobble;
+
+        if (b.y + b.r < 0) {
+          b.y = this.h + b.r;
+          b.x = Math.random() * this.w;
         }
 
-        this.lastMouse.x = this.mouse.x;
-        this.lastMouse.y = this.mouse.y;
+        this.ctx.beginPath();
+        this.ctx.arc(drawX, b.y, b.r, 0, Math.PI * 2);
+        this.ctx.fillStyle = `rgba(${color}, ${b.opacity})`;
+        this.ctx.fill();
 
-        // Draw drops
-        this.drops.forEach((d, i) => {
-            d.y += d.vy;
-            d.x += d.vx;
-            d.vy += 0.05; // gravity
-            d.life -= d.decay;
+        if (b.r > 4) {
+          this.ctx.beginPath();
+          this.ctx.arc(drawX - b.r * 0.3, b.y - b.r * 0.3, b.r * 0.25, 0, Math.PI * 2);
+          this.ctx.fillStyle = `rgba(255, 255, 255, ${b.opacity * 0.5})`;
+          this.ctx.fill();
+        }
+      }
 
-            if (d.life <= 0) {
-                this.drops.splice(i, 1);
-                return;
-            }
-
-            this.ctx.beginPath();
-            this.ctx.arc(d.x, d.y, d.r * d.life, 0, Math.PI * 2);
-            this.ctx.fillStyle = `rgba(72, 202, 228, ${d.life * 0.4})`;
-            this.ctx.fill();
-
-            // Tiny glow
-            this.ctx.beginPath();
-            this.ctx.arc(d.x, d.y, d.r * d.life * 2, 0, Math.PI * 2);
-            this.ctx.fillStyle = `rgba(72, 202, 228, ${d.life * 0.08})`;
-            this.ctx.fill();
-        });
-
-        requestAnimationFrame(() => this.animate());
+      this.animId = requestAnimationFrame(() => this.render());
     }
-}
+  }
 
-window.HeroParticles = HeroParticles;
-window.BubblesCanvas = BubblesCanvas;
-window.CursorTrail = CursorTrail;
+  function init() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    systems.push(new BubbleSystem('heroParticles', {
+      count: 30, minSize: 1, maxSize: 5,
+      minSpeed: 0.2, maxSpeed: 0.8,
+      minOpacity: 0.05, maxOpacity: 0.2,
+    }));
+
+    systems.push(new BubbleSystem('productsBubbles', {
+      count: 25, minSize: 2, maxSize: 6,
+      minSpeed: 0.3, maxSpeed: 1.0,
+    }));
+  }
+
+  return { init };
+})();

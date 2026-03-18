@@ -1,169 +1,377 @@
 {
-  "company": {
-    "name": "ТОВ \"Нептун\"",
-    "brand": "Остреченська",
-    "slogan": "Остреченська - визнана якість поліського краю",
-    "description": "Підприємство розташоване в екологічно чистому регіоні України — Чернігівській області. Компанія має сертифікацію ISO 9001-2000. Свердловина глибиною 830 метрів постачає мінеральну лікувально-столову воду гідрокарбонатно-хлоридно-натрієвого складу. Вода розливається безпосередньо на місці видобутку у ємності 0,5 та 1,5 дм³ під брендом \"Остреченська\".",
-    "email": "neptun_ltd@ukr.net",
-    "phones": ["04644 2-10-32", "067 461-51-90"],
-    "website": "neptun.cn.ua"
+  "meta": {
+    "source_url": "https://www.neptun.cn.ua",
+    "parsed_date": "2026-03-18",
+    "platform": "OpenCart",
+    "notes": "Prices are small-wholesale (drybno-optovi) for self-pickup from Mena warehouse"
   },
+
+  "company": {
+    "legal_name": "ТОВ «Нептун»",
+    "brand": "Остреченська",
+    "secondary_brand": "Сіверська",
+    "slogan": "Остреченська — визнана якість поліського краю",
+    "email": "neptun_ltd@ukr.net",
+    "working_hours": "Понеділок–п'ятниця з 08:00 по 17:00",
+    "certification": "ISO 9001-2000",
+    "well_depth_m": 830,
+    "water_type": "мінеральна лікувально-столова гідрокарбонатно-хлоридно-натрієва",
+    "description": "Підприємство розташоване в екологічно чистому регіоні Чернігівської області. Свердловина глибиною 830 м із мінеральною лікувально-столовою гідрокарбонатно-хлоридно-натрієвою водою. Мінеральну воду розливають на місці видобутку, безпосередньо з джерела, що максимально зберігає лікувальні властивості. Окрім мінеральної води, підприємство виробляє солодкі безалкогольні напої: Лимонад, Крем-Сода, Буратіно, Дюшес, Ситро, Лимон-Персик, Тархун, Малина та Квасовий напій.",
+    "own_fleet": true,
+
+    "phones": [
+      { "number": "04644 2-10-32", "type": "landline", "location": "Мена" },
+      { "number": "067 461-51-90", "type": "mobile", "location": "Мена" },
+      { "number": "067 461-51-95", "type": "mobile", "location": "Чернігів" },
+      { "number": "067 461-51-96", "type": "mobile", "location": "Чернігів" },
+      { "number": "067 461-51-97", "type": "mobile", "location": "Шостка" }
+    ]
+  },
+
   "locations": [
     {
       "city": "Мена",
-      "address": "15600, м. Мена, Чернігівська обл., вул. Гастелло, буд. №3",
-      "phone": ["04644 2-10-32", "067 461-51-90"],
-      "hours": "Пн-Пт 08:00-17:00",
       "type": "Головний офіс та склад",
-      "coordinates": { "lat": 51.52597, "lng": 32.24983 }
+      "address": "вул. Гастелло, буд. №3, 15600 м. Мена, Чернігівська обл.",
+      "phones": ["04644 2-10-32", "067 461-51-90"],
+      "hours": "Пн–Пт 08:00–17:00",
+      "coordinates": { "lat": 51.52597, "lng": 32.24983 },
+      "is_main": true
     },
     {
       "city": "Чернігів",
-      "address": "м. Чернігів, вул. Дніпровська, буд. №34",
-      "phone": ["067 461-51-95", "067 461-51-96"],
-      "hours": "Пн-Пт 08:00-17:00",
-      "type": "Філія"
+      "type": "Оптовий склад (філія)",
+      "address": "вул. Дніпровська, буд. №34, м. Чернігів",
+      "phones": ["067 461-51-95", "067 461-51-96"],
+      "hours": "Пн–Пт 08:00–17:00",
+      "coordinates": { "lat": 51.49161, "lng": 31.24953 },
+      "is_main": false
     },
     {
       "city": "Шостка",
-      "address": "м. Шостка, вул. Свободи, буд. №31",
-      "phone": ["067 461-51-97"],
-      "hours": "Пн-Пт 08:00-17:00",
-      "type": "Філія"
+      "type": "Оптовий склад (філія)",
+      "address": "вул. Свободи, буд. №31, м. Шостка",
+      "phones": ["067 461-51-97"],
+      "hours": "Пн–Пт 08:00–17:00",
+      "coordinates": { "lat": 51.86913, "lng": 33.47199 },
+      "is_main": false
     }
   ],
+
   "delivery": {
     "methods": [
-      { "name": "Самовивіз", "description": "З головного складу в м. Мена" },
-      { "name": "Нова Пошта", "description": "Оплата за тарифами перевізника" },
-      { "name": "Транспорт ТОВ \"Нептун\"", "description": "Доставка по Чернігівській області за домовленістю" }
-    ]
+      {
+        "id": "self_mena",
+        "name": "Самовивіз з м. Мена",
+        "description": "Головний склад — базові ціни",
+        "surcharge_uah": 0
+      },
+      {
+        "id": "self_chernihiv",
+        "name": "Самовивіз з м. Чернігів",
+        "description": "Оптовий склад",
+        "surcharge_uah": "0.50–1.50 (залежно від товару)"
+      },
+      {
+        "id": "self_shostka",
+        "name": "Самовивіз з м. Шостка",
+        "description": "Оптовий склад",
+        "surcharge_uah": "0.50–1.50 (залежно від товару)"
+      },
+      {
+        "id": "nova_poshta",
+        "name": "Нова Пошта",
+        "description": "Оплата за тарифами перевізника"
+      },
+      {
+        "id": "company_transport",
+        "name": "Транспорт ТОВ «Нептун»",
+        "description": "В межах Чернігівської області, за домовленістю"
+      }
+    ],
+    "pricing_note": "Вказані дрібно-оптові ціни при самовивозі із головного складу м. Мена. Для оптових цін, вартості доставки та комерційних пропозицій — зв'яжіться через форму зворотного зв'язку."
   },
+
   "categories": [
     {
-      "id": 59,
-      "name": "Вода солодка газована",
-      "nameEn": "Sweet Carbonated Water"
-    },
-    {
-      "id": 57,
+      "id": "mineral",
       "name": "Вода мінеральна газована",
-      "nameEn": "Carbonated Mineral Water"
+      "name_en": "Carbonated Mineral Water",
+      "slug": "mineralna-hazovana",
+      "opencart_path": 57,
+      "description": "Мінеральна лікувально-столова вода з глибини 830 м"
     },
     {
-      "id": 33,
+      "id": "sweet",
+      "name": "Вода солодка газована",
+      "name_en": "Sweet Carbonated Water",
+      "slug": "solodka-hazovana",
+      "opencart_path": 59,
+      "description": "Солодкі безалкогольні газовані напої"
+    },
+    {
+      "id": "drinking",
       "name": "Вода питна негазована",
-      "nameEn": "Non-carbonated Drinking Water"
+      "name_en": "Non-carbonated Drinking Water",
+      "slug": "pytna-nehazovana",
+      "opencart_path": 33,
+      "description": "Чиста питна негазована вода"
     }
   ],
+
   "products": [
     {
       "id": 52,
-      "name": "Вода мінеральна газована \"Остреченська\"",
-      "volume": "0.5л",
-      "price": 11.50,
-      "packaging": "12 бут. в упаковці",
-      "category": "mineral",
-      "carbonated": true
+      "category_id": "mineral",
+      "brand": "Остреченська",
+      "name": "Остреченська 0,5 л",
+      "full_name": "Вода мінеральна газована «Остреченська», ємність 0,5 л",
+      "volume_l": 0.5,
+      "price_uah": 13.00,
+      "pack_qty": 12,
+      "pack_description": "1 упаковка містить 12 пляшок ємністю 0,5 л",
+      "min_order": 12,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "mineral_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 0.50,
+        "shostka": 0.50
+      },
+      "reviews_count": 1,
+      "opencart_product_id": 52,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=52"
     },
     {
       "id": 49,
-      "name": "Вода мінеральна газована \"Остреченська\"",
-      "volume": "1.5л",
-      "price": 18.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "mineral",
-      "carbonated": true
+      "category_id": "mineral",
+      "brand": "Остреченська",
+      "name": "Остреченська 1,5 л",
+      "full_name": "Вода мінеральна газована «Остреченська», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 21.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "mineral_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 0.50,
+        "shostka": 1.00
+      },
+      "reviews_count": 6,
+      "opencart_product_id": 49,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=49"
     },
     {
       "id": 62,
-      "name": "Вода питна негазована \"Сіверська\"",
-      "volume": "6л",
-      "price": 40.00,
-      "packaging": "2 бут. в упаковці",
-      "category": "drinking",
-      "carbonated": false
+      "category_id": "drinking",
+      "brand": "Сіверська",
+      "name": "Сіверська 6 л",
+      "full_name": "Вода питна негазована «Сіверська», ємність 6 л",
+      "volume_l": 6.0,
+      "price_uah": 44.00,
+      "pack_qty": 2,
+      "pack_description": "1 упаковка містить 2 пляшки ємністю 6 л",
+      "min_order": 2,
+      "in_stock": true,
+      "carbonated": false,
+      "type": "still_drinking",
+      "reviews_count": 1,
+      "opencart_product_id": 62,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=62"
     },
     {
       "id": 50,
+      "category_id": "sweet",
+      "brand": "Остреченська",
       "name": "Лимонад",
-      "volume": "1.5л",
-      "price": 19.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "sweet",
-      "carbonated": true
+      "full_name": "Вода солодка газована «Лимонад», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 22.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "sweet_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 1.00,
+        "shostka": 1.00
+      },
+      "opencart_product_id": 50,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=50"
     },
     {
       "id": 51,
+      "category_id": "sweet",
+      "brand": "Остреченська",
       "name": "Буратіно",
-      "volume": "1.5л",
-      "price": 19.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "sweet",
-      "carbonated": true
+      "full_name": "Вода солодка газована «Буратіно», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 22.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "sweet_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 1.50,
+        "shostka": 1.50
+      },
+      "reviews_count": 1,
+      "opencart_product_id": 51,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=51"
     },
     {
       "id": 54,
+      "category_id": "sweet",
+      "brand": "Остреченська",
       "name": "Дюшес",
-      "volume": "1.5л",
-      "price": 19.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "sweet",
-      "carbonated": true
-    },
-    {
-      "id": 57,
-      "name": "Крем-Сода",
-      "volume": "1.5л",
-      "price": 19.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "sweet",
-      "carbonated": true
+      "full_name": "Вода солодка газована «Дюшес», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 22.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "sweet_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 1.50,
+        "shostka": 1.50
+      },
+      "opencart_product_id": 54,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=54"
     },
     {
       "id": 56,
+      "category_id": "sweet",
+      "brand": "Остреченська",
       "name": "Лимон Персик",
-      "volume": "1.5л",
-      "price": 19.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "sweet",
-      "carbonated": true
+      "full_name": "Вода солодка газована «Лимон Персик», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 22.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "sweet_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 1.50,
+        "shostka": 1.50
+      },
+      "opencart_product_id": 56,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=56"
     },
     {
-      "id": 60,
-      "name": "Малина",
-      "volume": "1.5л",
-      "price": 19.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "sweet",
-      "carbonated": true
-    },
-    {
-      "id": 61,
-      "name": "Ситро",
-      "volume": "1.5л",
-      "price": 19.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "sweet",
-      "carbonated": true
+      "id": 57,
+      "category_id": "sweet",
+      "brand": "Остреченська",
+      "name": "Крем-Сода",
+      "full_name": "Вода солодка газована «Крем-Сода», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 22.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "sweet_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 1.50,
+        "shostka": 1.50
+      },
+      "opencart_product_id": 57,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=57"
     },
     {
       "id": 59,
+      "category_id": "sweet",
+      "brand": "Остреченська",
       "name": "Тархун",
-      "volume": "1.5л",
-      "price": 19.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "sweet",
-      "carbonated": true
+      "full_name": "Вода солодка газована «Тархун», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 22.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "sweet_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 1.00,
+        "shostka": 1.00
+      },
+      "reviews_count": 2,
+      "opencart_product_id": 59,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=59"
+    },
+    {
+      "id": 60,
+      "category_id": "sweet",
+      "brand": "Остреченська",
+      "name": "Малина",
+      "full_name": "Вода солодка газована «Малина», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 22.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "sweet_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 1.00,
+        "shostka": 1.00
+      },
+      "opencart_product_id": 60,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=60"
+    },
+    {
+      "id": 61,
+      "category_id": "sweet",
+      "brand": "Остреченська",
+      "name": "Ситро",
+      "full_name": "Вода солодка газована «Ситро», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 22.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "sweet_sparkling",
+      "delivery_surcharges": {
+        "chernihiv": 1.00,
+        "shostka": 1.00
+      },
+      "reviews_count": 2,
+      "opencart_product_id": 61,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=61"
     },
     {
       "id": 55,
+      "category_id": "sweet",
+      "brand": "Остреченська",
       "name": "Квасовий",
-      "volume": "1.5л",
-      "price": 20.50,
-      "packaging": "6 бут. в упаковці",
-      "category": "sweet",
-      "carbonated": true
+      "full_name": "Напій «Квасовий», ємність 1,5 л",
+      "volume_l": 1.5,
+      "price_uah": 23.00,
+      "pack_qty": 6,
+      "pack_description": "1 упаковка містить 6 пляшок ємністю 1,5 л",
+      "min_order": 6,
+      "in_stock": true,
+      "carbonated": true,
+      "type": "sweet_sparkling",
+      "delivery_surcharges": {
+        "shostka": 0.50
+      },
+      "opencart_product_id": 55,
+      "source_url": "https://www.neptun.cn.ua/index.php?route=product/product&product_id=55"
     }
   ]
 }

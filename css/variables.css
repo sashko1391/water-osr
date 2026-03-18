@@ -1,0 +1,108 @@
+/* ============================================
+   ОСТРЕЧЕНСЬКА — Design Tokens
+   Concept: "Глибина Полісся"
+   ============================================ */
+
+:root {
+  /* ── Color Palette ── */
+  --deep-abyss:     #0A1628;
+  --polissya-night:  #1B3A5C;
+  --mineral-teal:    #2E8B8B;
+  --crystal-spring:  #5CC8C8;
+  --morning-mist:    #E8F4F0;
+  --sandy-gold:      #C9A96E;
+  --snow-white:      #F7FAFA;
+  --pure-white:      #FFFFFF;
+
+  /* Extended */
+  --deep-abyss-rgb:    10, 22, 40;
+  --crystal-spring-rgb: 92, 200, 200;
+  --mineral-teal-rgb:  46, 139, 139;
+  --sandy-gold-rgb:    201, 169, 110;
+
+  /* Gradients */
+  --gradient-depth:    linear-gradient(180deg, var(--polissya-night) 0%, var(--deep-abyss) 100%);
+  --gradient-water:    linear-gradient(135deg, var(--mineral-teal) 0%, var(--crystal-spring) 100%);
+  --gradient-gold:     linear-gradient(135deg, #B8934A 0%, var(--sandy-gold) 50%, #E0C88C 100%);
+  --gradient-glass:    linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+
+  /* ── Typography ── */
+  --font-heading:  'Cormorant Garamond', 'Georgia', serif;
+  --font-body:     'Nunito Sans', 'Helvetica Neue', sans-serif;
+  --font-mono:     'DM Mono', 'Courier New', monospace;
+
+  --fs-hero:       clamp(4rem, 10vw, 8rem);
+  --fs-h1:         clamp(2.5rem, 5vw, 4.5rem);
+  --fs-h2:         clamp(2rem, 4vw, 3.5rem);
+  --fs-h3:         clamp(1.25rem, 2vw, 1.75rem);
+  --fs-body:       clamp(1rem, 1.1vw, 1.125rem);
+  --fs-small:      0.875rem;
+  --fs-xs:         0.75rem;
+  --fs-watermark:  clamp(6rem, 15vw, 14rem);
+
+  --lh-heading:    1.1;
+  --lh-body:       1.65;
+  --ls-heading:    -0.02em;
+  --ls-wide:       0.15em;
+
+  /* ── Spacing ── */
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   2rem;
+  --space-lg:   4rem;
+  --space-xl:   6rem;
+  --space-2xl:  10rem;
+
+  --container-max:    1280px;
+  --container-pad:    clamp(1.5rem, 4vw, 3rem);
+
+  /* ── Glass ── */
+  --glass-bg:        rgba(255, 255, 255, 0.04);
+  --glass-border:    rgba(255, 255, 255, 0.08);
+  --glass-blur:      20px;
+  --glass-bg-hover:  rgba(255, 255, 255, 0.07);
+
+  /* ── Radius ── */
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-xl:   32px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.15);
+  --shadow-md:   0 8px 32px rgba(0,0,0,0.2);
+  --shadow-lg:   0 16px 64px rgba(0,0,0,0.3);
+  --shadow-glow: 0 0 40px rgba(var(--crystal-spring-rgb), 0.15);
+
+  /* ── Transitions ── */
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast:   0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow:   0.8s;
+
+  /* ── Z-index ── */
+  --z-particles:  1;
+  --z-content:    5;
+  --z-nav:        100;
+  --z-overlay:    200;
+  --z-modal:      300;
+  --z-cursor:     400;
+  --z-preloader:  500;
+}
+
+/* ── Dark section defaults ── */
+.section-dark {
+  --text-primary:   var(--morning-mist);
+  --text-secondary: rgba(232, 244, 240, 0.6);
+  --text-accent:    var(--crystal-spring);
+}
+
+/* ── Light section overrides ── */
+.section-light {
+  --text-primary:   var(--deep-abyss);
+  --text-secondary: rgba(10, 22, 40, 0.6);
+  --text-accent:    var(--mineral-teal);
+}
